@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Chromium instead of Google Chrome (works in codespaces)
-RUN apt-get update && apt-get install -y chromium driver chromium
+RUN apt-get update && apt-get install -y chromium-driver chromium
 
 # Install Chrome Driver
 RUN CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1) \
