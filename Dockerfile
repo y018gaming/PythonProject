@@ -10,11 +10,8 @@ RUN apt-get update && apt-get install -y \
     libgconf-2-4 \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Chrome
-RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-    && dpkg -i google-chrome-stable_current_amd64.deb || true \
-    && apt-get -fy install \
-    && rm google-chrome-stable_current_amd64.deb
+# Install Chromium instead of Google Chrome (works in codespaces)
+RUN apt-get update && apt-get install -y chromium driver chromium
 
 # Install Chrome Driver
 RUN CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1) \
